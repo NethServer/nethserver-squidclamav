@@ -8,6 +8,7 @@ Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
 
 Requires: nethserver-c-icap
+Requires: nethserver-antivirus
 Requires: squidclamav
 
 BuildRequires: perl
