@@ -1,0 +1,7 @@
+# Path to the clamd socket, use clamd_local if you use Unix socket or if clamd
+# is listening on an Inet socket, comment clamd_local and set the clamd_ip and
+# clamd_port to the corresponding value.
+clamd_local /var/run/clamav/clamd.ctl
+#clamd_ip 192.168.1.5,127.0.0.1
+#clamd_port 3310
+

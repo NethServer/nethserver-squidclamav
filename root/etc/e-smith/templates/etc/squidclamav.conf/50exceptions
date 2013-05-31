@@ -1,0 +1,30 @@
+#
+# Here is some defaut regex pattern to have a high speed proxy on system
+# with low resources.
+#
+
+# Do not scan images
+abort ^.*\.(ico|gif|png|jpg)$
+abortcontent ^image\/.*$
+
+# Do not scan text files
+abort ^.*\.(css|xml|xsl|js|html|jsp)$
+abortcontent ^text\/.*$
+abortcontent ^application\/x-javascript$
+
+# Do not scan streamed videos
+abortcontent ^video\/x-flv$
+abortcontent ^video\/mp4$
+
+# Do not scan flash files
+abort ^.*\.swf$
+abortcontent ^application\/x-shockwave-flash$
+
+# Do not scan sequence of framed Microsoft Media Server (MMS) data packets
+abortcontent ^.*application\/x-mms-framed.*$
+
+White list some sites
+#whitelist .*\.clamav.net
+
+# See also 'trustuser' and 'trustclient' configuration directives
+

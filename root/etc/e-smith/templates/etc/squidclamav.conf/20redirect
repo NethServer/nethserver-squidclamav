@@ -1,0 +1,2 @@
+# When a virus is found then redirect the user to this URL
+redirect http://proxy.domain.dom/cgi-bin/clwarn.cgi

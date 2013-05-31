@@ -1,0 +1,10 @@
+{
+    my $sc = $squidclamav{'status'} || 'disabled';
+    my $ci = $c-icap{'status'} || 'disabled';
+    if ($sc eq 'enabled' && $ci eq 'enabled') {
+        $OUT.="icap_service clamav_req reqmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav\n";
+        $OUT.="adaptation_access clamav_req allow all\n";
+        $OUT.="icap_service clamav_resp respmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav\n";
+        $OUT.="adaptation_access clamav_resp allow all\n";
+    }
+}
