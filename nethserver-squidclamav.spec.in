@@ -7,9 +7,7 @@ URL: %{url_prefix}/%{name}
 Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
 
-Requires: nethserver-c-icap
-Requires: nethserver-antivirus
-Requires: nethsever-httpd
+Requires: nethserver-c-icap, nethserver-antivirus, nethserver-httpd, nethserver-squid
 Requires: squidclamav
 
 BuildRequires: perl
