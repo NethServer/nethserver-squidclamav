@@ -4,7 +4,7 @@ timeout 1
 
 # Force SquidClamav to log all virus detection or squiguard block redirection
 # to the c-icap log file.
-logredir 0
+logredir 1
 
 # Enable / disable DNS lookup of client ip address. Default is enabled '1' to
 # preserve backward compatibility but you must desactivate this feature if you
