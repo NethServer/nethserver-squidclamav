@@ -1,5 +1,5 @@
 <?php
-namespace NethServer\Module\Proxy;
+namespace NethServer\Module\ContentFilter;
 
 /*
  * Copyright (C) 2013 Nethesis S.r.l.
@@ -30,7 +30,7 @@ use Nethgui\System\PlatformInterface as Validate;
 class Antivirus extends \Nethgui\Controller\AbstractController
 {
 
-    public $sortId = 30;
+    public $sortId = 90;
     
     // Declare all parameters
     public function initialize()
