@@ -1,4 +1,8 @@
 # When a virus is found then redirect the user to this URL
 {
-    $OUT.="redirect http://$SystemName.$DomainName/cgi-bin/squidclamav/clwarn.cgi\n";
+    use esmith::NetworksDB;
+    my $ndb = esmith::NetworksDB->open_ro();
+    my $green = $ndb->green();
+    my $redirect = "http://".$green->prop('ipaddr')."/cgi-bin/nethserver-block.cgi"; 
+    $OUT.="redirect $redirect\n";
 }
