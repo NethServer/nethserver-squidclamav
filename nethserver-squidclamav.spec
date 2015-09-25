@@ -1,7 +1,7 @@
 Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
 Version: 1.1.0
-Release: 1
+Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
 Source0: %{name}-%{version}.tar.gz
