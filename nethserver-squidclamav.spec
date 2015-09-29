@@ -1,6 +1,6 @@
 Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
-Version: 1.1.0
+Version: 1.1.1
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
@@ -37,6 +37,9 @@ echo "%doc COPYING" >> %{name}-%{version}-filelist
 %defattr(-,root,root)
 
 %changelog
+* Tue Sep 29 2015 Davide Principi <davide.principi@nethesis.it> - 1.1.1-1
+- Make Italian language pack optional - Enhancement #3265 [NethServer]
+
 * Tue Jan 20 2015 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.1.0-1.ns6
 - squidGuard: support multiple profiles - Enhancement #2958 [NethServer]
 - Enhance visual appearance of proxy block pages - Feature #2866 [NethServer]
