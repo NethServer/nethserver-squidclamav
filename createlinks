@@ -35,5 +35,6 @@ event_actions($event, 'nethserver-squidclamav-signatures' => '30');
 templates2events("/etc/c-icap/squidclamav.conf",  $event);
 templates2events("/etc/squid/squid.conf",  $event);
 event_services($event, 'c-icap' => 'restart');
+event_services($event, 'clamd@squidclamav' => 'restart');
 event_services($event, 'squid' => 'reload');
 

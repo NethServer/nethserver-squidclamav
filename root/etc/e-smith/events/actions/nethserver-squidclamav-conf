@@ -19,3 +19,7 @@
 # along with NethServer.  If not, see COPYING.
 
 systemd-tmpfiles --create  /usr/lib/tmpfiles.d/squidclamav.conf
+
+status=`/sbin/e-smith/config getprop squidclamav status`
+/sbin/e-smith/config setprop clamd@squidclamav status $status
+
