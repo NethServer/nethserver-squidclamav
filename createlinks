@@ -31,6 +31,7 @@ my $event = "nethserver-squidclamav-update";
 
 event_actions($event, 'initialize-default-databases' => '00');
 event_actions($event, 'nethserver-squidclamav-conf' => '20');
+event_actions($event, 'nethserver-squidclamav-signatures' => '30');
 templates2events("/etc/c-icap/squidclamav.conf",  $event);
 templates2events("/etc/squid/squid.conf",  $event);
 event_services($event, 'c-icap' => 'reload');
