@@ -18,7 +18,7 @@ sigs=`/sbin/e-smith/config getprop squidclamav Signatures`
 find $DEST_DIR -type f -delete
 
 if [ "x$sigs" = "x" ]; then
-    for i in `find $ORI_DIR`
+    for i in `find $ORI_DIR -type f`
     do
         b=`basename $i`
         ln -sf $i $DEST_DIR/$b
