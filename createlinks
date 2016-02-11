@@ -38,3 +38,11 @@ event_services($event, 'c-icap' => 'restart');
 event_services($event, 'clamd@squidclamav' => 'restart');
 event_services($event, 'squid' => 'reload');
 
+#--------------------------------------------------
+# actions for nethserver-squidguard-save event
+# refs #3354
+#--------------------------------------------------
+
+$event = "nethserver-squidguard-save";
+templates2events("/etc/squidclamav.conf",  $event);
+event_services($event, 'c-icap' => 'reload');
