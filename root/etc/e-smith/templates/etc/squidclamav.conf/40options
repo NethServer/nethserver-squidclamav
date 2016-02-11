@@ -10,7 +10,7 @@ logredir 1
 # preserve backward compatibility but you must desactivate this feature if you
 # don't use trustclient with hostname in the regexp or if you don't have a DNS
 # on your network. Disabling it will also speed up squidclamav.
-dnslookup 1
+dnslookup 0
 
 # Enable / Disable Clamav Safe Browsing feature. You mus have enabled the
 # corresponding behavior in clamd by enabling SafeBrowsing into freshclam.conf
