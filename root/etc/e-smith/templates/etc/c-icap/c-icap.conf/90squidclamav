@@ -1,6 +1,0 @@
-{
-    my $status = $squidclamav{'status'} || 'disabled';
-    if ($status eq 'enabled') {
-        $OUT.="Service squidclamav squidclamav.so\n";
-    }
-}
