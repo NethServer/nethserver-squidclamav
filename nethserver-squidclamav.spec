@@ -1,6 +1,6 @@
 Summary: NethServer E-CAP squid configuration
 Name: nethserver-squidclamav
-Version: 1.3.1
+Version: 2.0.0
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
@@ -39,6 +39,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Tue Jan 03 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 2.0.0-1
+- Antivirus web: replace Squidclamav - NethServer/dev#5183
+
 * Thu Aug 25 2016 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 1.3.1-1
 - nethserver-squidclamav: reload action not supported by c-icap - Bug NethServer/dev#5083
 
