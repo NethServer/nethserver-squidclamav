@@ -1,4 +1,4 @@
-Summary: NethServer E-CAP squid configuration
+Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
 Version: 2.0.0
 Release: 1%{?dist}
@@ -7,14 +7,14 @@ URL: %{url_prefix}/%{name}
 Source0: %{name}-%{version}.tar.gz
 BuildArch: noarch
 
-Requires: nethserver-squidguard
-Requires: ecap-clamav
+Requires: nethserver-c-icap, nethserver-antivirus, nethserver-httpd, nethserver-squidguard
+Requires: squidclamav
 
 BuildRequires: perl
 BuildRequires: nethserver-devtools 
 
 %description
-NethServer E-CAP squid configuration
+NethServer squidclamav configuration
 
 %prep
 %setup
@@ -27,6 +27,7 @@ perl createlinks
 rm -rf %{buildroot}
 (cd root; find . -depth -print | cpio -dump %{buildroot})
 %{genfilelist} %{buildroot} > %{name}-%{version}-filelist
+mkdir -p %{buildroot}/var/lib/squidclamav
 
 %post
 
@@ -35,6 +36,7 @@ rm -rf %{buildroot}
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
+%dir %attr(0755,clamupdate,clamupdate) %{_sharedstatedir}/squidclamav
 %doc COPYING
 
 

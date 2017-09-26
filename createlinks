@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 #
-# Copyright (C) 2016 Nethesis S.r.l.
+# Copyright (C) 2013 Nethesis S.r.l.
 # http://www.nethesis.it - support@nethesis.it
 # 
 # This script is part of NethServer.
@@ -30,6 +30,18 @@ use esmith::Build::CreateLinks  qw(:all);
 my $event = "nethserver-squidclamav-update";
 
 event_actions($event, 'initialize-default-databases' => '00');
+event_actions($event, 'nethserver-squidclamav-conf' => '20');
+event_actions($event, 'nethserver-squidclamav-signatures' => '30');
+templates2events("/etc/c-icap/squidclamav.conf",  $event);
 templates2events("/etc/squid/squid.conf",  $event);
+event_services($event, 'c-icap' => 'restart');
 event_services($event, 'squid' => 'reload');
 
+#--------------------------------------------------
+# actions for nethserver-squidguard-save event
+# refs #3354
+#--------------------------------------------------
+
+$event = "nethserver-squidguard-save";
+templates2events("/etc/squidclamav.conf",  $event);
+event_services($event, 'c-icap' => 'restart');

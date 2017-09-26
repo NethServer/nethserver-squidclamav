@@ -1,0 +1,10 @@
+{
+    my $list = $squidguard{'DomainWhitelist'} || "";
+    my @sites = split(',', $list);
+
+    foreach my $site (@sites) {
+        $site =~ s/\./\\./g;
+        $OUT .= "abort \\.$site\n";
+        $OUT .= "abort ^$site\/.*\$\n";
+    }
+}

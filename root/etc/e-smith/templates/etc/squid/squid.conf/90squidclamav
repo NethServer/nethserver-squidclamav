@@ -1,34 +1,10 @@
-#
-# 90squidclamav
-#
 {
     my $sc = $squidclamav{'status'} || 'disabled';
-    if ($sc eq 'enabled') {
-    $OUT =<<EOF;
-ecap_enable on
-
-# Bypass scan mime-types
-acl bypass_scan_types_req req_mime_type -i ^text/
-acl bypass_scan_types_req req_mime_type -i ^application/x-javascript
-acl bypass_scan_types_req req_mime_type -i ^application/x-shockwave-flash
-acl bypass_scan_types_req req_mime_type -i ^image/
-acl bypass_scan_types_req req_mime_type -i ^video
-acl bypass_scan_types_req req_mime_type -i ^audio
-acl bypass_scan_types_req req_mime_type -i ^application\/x-mms-framed.*\$
-
-acl bypass_scan_types_rep rep_mime_type -i ^text/
-acl bypass_scan_types_rep rep_mime_type -i ^application/x-javascript
-acl bypass_scan_types_rep rep_mime_type -i ^application/x-shockwave-flash
-acl bypass_scan_types_rep rep_mime_type -i ^image/
-acl bypass_scan_types_rep rep_mime_type -i ^video
-acl bypass_scan_types_rep rep_mime_type -i ^audio
-acl bypass_scan_types_rep rep_mime_type -i ^application\/x-mms-framed.*\$
-
-loadable_modules /usr/lib64/ecap_clamav_adapter.so
-ecap_service clamav_service_req reqmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=REQMOD bypass=off message_size_max=5000000
-ecap_service clamav_service_resp respmod_precache uri=ecap://e-cap.org/ecap/services/clamav?mode=RESPMOD bypass=on message_size_max=5000000
-adaptation_access clamav_service_req allow !bypass_scan_types_req all
-adaptation_access clamav_service_resp allow !bypass_scan_types_rep all
-EOF
+    my $ci = ${'c-icap'}{'status'} || 'disabled';
+    if ($sc eq 'enabled' && $ci eq 'enabled') {
+        $OUT.="icap_service clamav_req reqmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav\n";
+        $OUT.="adaptation_access clamav_req allow all\n";
+        $OUT.="icap_service clamav_resp respmod_precache bypass=1 icap://127.0.0.1:1344/squidclamav\n";
+        $OUT.="adaptation_access clamav_resp allow all\n";
     }
 }
