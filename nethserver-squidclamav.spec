@@ -9,6 +9,7 @@ BuildArch: noarch
 
 Requires: nethserver-c-icap, nethserver-antivirus, nethserver-httpd, nethserver-squidguard
 Requires: squidclamav
+Obsoletes: ecap-clamav
 
 BuildRequires: perl
 BuildRequires: nethserver-devtools 
