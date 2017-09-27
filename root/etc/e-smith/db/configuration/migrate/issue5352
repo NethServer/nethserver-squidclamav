@@ -1,0 +1,8 @@
+{
+    #
+    # issue #5352: replace ecap with icap
+    #
+
+    my $status = $DB->get_prop('squidclamav','status') || 'disabled';
+    $DB->set_prop('c-icap','status',$status);
+}

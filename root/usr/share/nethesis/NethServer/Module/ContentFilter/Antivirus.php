@@ -37,11 +37,23 @@ class Antivirus extends \Nethgui\Controller\AbstractController
     {
         parent::initialize();
 
-        $this->declareParameter('status', Validate::SERVICESTATUS, array('configuration', 'squidclamav', 'status'));
+        $this->declareParameter('status', Validate::SERVICESTATUS, array(array('configuration', 'squidclamav', 'status'),array('configuration', 'c-icap', 'status')));
     }
+
+    public function writeStatus($value)
+    {
+        return array($value,$value);
+    }
+    
+    public function readStatus($v1, $v2)
+    {
+        return $v1;
+    }
+
 
     protected function onParametersSaved($changes)
     {
-        $this->getPlatform()->signalEvent('nethserver-squidclamav-update &');
+        $this->getPlatform()->signalEvent('nethserver-squidclamav-update@post-process');
+        $this->getPlatform()->signalEvent('nethserver-c-icap-update@post-process');
     }
 }

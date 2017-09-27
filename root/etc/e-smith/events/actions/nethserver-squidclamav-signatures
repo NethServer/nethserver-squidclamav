@@ -1,0 +1,33 @@
+#!/bin/bash
+
+ORI_DIR=/var/lib/clamav
+DEST_DIR=/var/lib/squidclamav
+
+if [ ! -d $DEST_DIR ]; then
+    echo "No such directory: $DEST_DIR"
+    exit 1
+fi
+if [ ! -d $ORI_DIR ]; then
+    echo "No such directory: $ORI_DIR"
+    exit 1
+fi
+
+sigs=`/sbin/e-smith/config getprop squidclamav Signatures`
+
+# remove all links
+find $DEST_DIR -type f -delete
+
+if [ "x$sigs" = "x" ]; then
+    for i in `find $ORI_DIR -type f`
+    do
+        b=`basename $i`
+        ln -sf $i $DEST_DIR/$b
+    done
+else
+    for i in $(echo $sigs | tr "," "\n")
+    do
+        if [ -f $ORI_DIR/$i ]; then
+            ln -sf $ORI_DIR/$i $DEST_DIR/$i
+        fi
+    done
+fi

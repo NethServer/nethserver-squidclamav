@@ -2,8 +2,6 @@
 nethserver-squidclamav
 ======================
 
-Avaialble only on NethServer 6.
-
 Web antivirus is composed by two components:
 
 * c-icap server: ICAP server for Squid
