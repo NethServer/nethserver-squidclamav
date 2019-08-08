@@ -1,0 +1,7 @@
+{
+    #
+    # Remove unused Signatures property
+    #
+
+    $DB->get_prop_and_delete('squidclamav','Signatures');
+}
