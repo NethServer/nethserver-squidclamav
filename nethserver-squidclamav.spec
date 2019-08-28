@@ -28,7 +28,6 @@ perl createlinks
 rm -rf %{buildroot}
 (cd root; find . -depth -print | cpio -dump %{buildroot})
 %{genfilelist} %{buildroot} > %{name}-%{version}-filelist
-mkdir -p %{buildroot}/var/lib/squidclamav
 
 %post
 
@@ -37,7 +36,6 @@ mkdir -p %{buildroot}/var/lib/squidclamav
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
 %dir %{_nseventsdir}/%{name}-update
-%dir %attr(0755,clamupdate,clamupdate) %{_sharedstatedir}/squidclamav
 %doc COPYING
 
 

@@ -31,7 +31,6 @@ my $event = "nethserver-squidclamav-update";
 
 event_actions($event, 'initialize-default-databases' => '00');
 event_actions($event, 'nethserver-squidclamav-conf' => '20');
-event_actions($event, 'nethserver-squidclamav-signatures' => '30');
 templates2events("/etc/c-icap/squidclamav.conf",  $event);
 templates2events("/etc/squid/squid.conf",  $event);
 event_services($event, 'c-icap' => 'restart');
@@ -45,3 +44,10 @@ event_services($event, 'squid' => 'reload');
 $event = "nethserver-squidguard-save";
 templates2events("/etc/squidclamav.conf",  $event);
 event_services($event, 'c-icap' => 'restart');
+
+#--------------------------------------------------
+# actions for nethserver-antivirus-update event
+#--------------------------------------------------
+
+$event = "nethserver-antivirus-update";
+event_services($event, 'clamd@squidclamav' => 'restart');
