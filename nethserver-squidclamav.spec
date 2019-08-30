@@ -1,6 +1,6 @@
 Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
-Version: 3.0.0
+Version: 3.1.0
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Aug 30 2019 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.1.0-1
+- Antivirus: improve memory usage - NethServer/dev#5803
+
 * Fri Oct 06 2017 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.0.0-1
 - squid crashes when ecap-clamav is enabled - Bug NethServer/dev#5352
 
