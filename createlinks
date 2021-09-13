@@ -44,4 +44,5 @@ event_services($event, 'squid' => 'reload');
 
 $event = "nethserver-squidguard-save";
 templates2events("/etc/squidclamav.conf",  $event);
+templates2events("/etc/c-icap/c-icap.conf",  $event);
 event_services($event, 'c-icap' => 'restart');
