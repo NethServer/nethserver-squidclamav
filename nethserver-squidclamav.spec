@@ -1,6 +1,6 @@
 Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
-Version: 3.1.0
+Version: 3.1.1
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Sep 13 2021 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.1.1-1
+- Squidclamav: Squid got an invalid ICAP OPTIONS - Bug NethServer/dev#6569
+
 * Fri Aug 30 2019 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.1.0-1
 - Antivirus: improve memory usage - NethServer/dev#5803
 
