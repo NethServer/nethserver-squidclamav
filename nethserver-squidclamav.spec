@@ -1,6 +1,6 @@
 Summary: NethServer squidclamav configuration
 Name: nethserver-squidclamav
-Version: 3.1.2
+Version: 3.1.3
 Release: 1%{?dist}
 License: GPL
 URL: %{url_prefix}/%{name} 
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Aug 31 2023 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.1.3-1
+- Forse c-icap restart - Bug NethServer/dev#6762
+
 * Thu Aug 24 2023 Giacomo Sanchietti <giacomo.sanchietti@nethesis.it> - 3.1.2-1
 - c-icap service does not start - Bug NethServer/dev#6762
 
